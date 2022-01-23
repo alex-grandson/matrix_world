@@ -1,11 +1,10 @@
 import React from "react";
-import {Button, IconButton, Popover, Typography} from "@mui/material";
+import {IconButton, Popover} from "@mui/material";
 import './index.sass';
 import {Accessible, Person, PersonOutline} from '@mui/icons-material';
+import CharacterCard from "../CharacterCard";
 
 export default function PersonDot(props) {
-
-    const {}
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -34,7 +33,7 @@ export default function PersonDot(props) {
                     horizontal: 'right',
                 }}
             >
-                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                <CharacterCard />
             </Popover>
         </>
 
