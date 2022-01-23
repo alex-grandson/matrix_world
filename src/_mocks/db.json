@@ -1,41 +1,70 @@
 {
-  "user": [
+  "human": [
     {
       "id": 1,
-      "role": "oracle",
-      "name": "John",
-      "age": 30,
-      "photo": "https://media.istockphoto.com/photos/productivity-powered-by-digital-technology-picture-id1330965067?b=1&k=20&m=1330965067&s=170667a&w=0&h=ys_MV3zYkn2HJCtHC4s_03Sz1MUC2BZv6PcDdk__XSc=",
-      "location": "office",
-      "world": "real",
-      "health": 69,
-      "power": 40
+      "name": "Leha",
+      "opportunities": "пить чай",
+      "characteristic": "крутой чел",
+      "health": 60,
+      "agility": 33,
+      "speed": 70,
+      "impact_force": 90,
+      "location_number": 1
     },
     {
       "id": 2,
-      "role": "architect",
-      "name": "Nick",
-      "age": 30,
-      "photo": "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-      "location": "nature",
-      "world": "matrix",
-      "health": 30,
-      "power": 49
+      "name": "Keril",
+      "opportunities": "учить нейронки",
+      "characteristic": "тоже крутой чел",
+      "health": 70,
+      "agility": 99,
+      "speed": 50,
+      "impact_force": 91,
+      "location_number": 2
     }
-    ],
-    "fight":
-    [
-      {
-        "id": 1,
-        "first": 1,
-        "second": 2,
-        "firstWon": true
-      },
-      {
-        "id": 2,
-        "first": 4,
-        "second": 3,
-        "firstWon": false
-      }
-    ]
+  ],
+  "location": [
+    {
+      "id": 1,
+      "location_number": 1,
+      "name": "Столовая",
+      "array_of_neighbours": [2, 4, 5],
+      "world_number": 1
+    },
+    {
+      "id": 2,
+      "location_number": 2,
+      "name": "Офис",
+      "array_of_neighbours": [1, 4, 5],
+      "world_number": 1
+    },
+    {
+      "id": 4,
+      "location_number": 4,
+      "name": "Помойка",
+      "array_of_neighbours": [2, 1, 5],
+      "world_number": 1
+    },
+    {
+      "id": 5,
+      "location_number": 5,
+      "name": "Парк",
+      "array_of_neighbours": [2, 4, 1],
+      "world_number": 1
+    },
+    {
+      "id": 6,
+      "location_number": 6,
+      "name": "Универ",
+      "array_of_neighbours": [3],
+      "world_number": 2
+    },
+    {
+      "id": 3,
+      "location_number": 3,
+      "name": "Общага",
+      "array_of_neighbours": [6],
+      "world_number": 2
+    }
+  ]
 }
