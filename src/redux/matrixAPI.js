@@ -4,17 +4,16 @@ export const matrixAPI = createApi({
     reducerPath: 'matrixAPI',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/'}),
     endpoints: (builder) => ({
-        getUserById: builder.query({
-            query: id => `/user?${id && `id=${id}`}`
+        getHumanById: builder.query({
+            query: id => `/human?${id && `id=${id}`}`
         }),
-        getUserListByWorld: builder.query({
-            query: world => `user?${world && `world=${world}`}`
+        getLocationsList: builder.query({
+            query: id => `/location?${id && `id=${id}`}`
         })
-
     })
 })
 
 export const {
-    useGetUserByIdQuery,
-    useGetUserListByWorld
+    useGetHumanByIdQuery,
+    useGetLocationListQuery
 } = matrixAPI
