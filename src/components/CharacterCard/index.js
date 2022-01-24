@@ -15,7 +15,7 @@ export default function CharacterCard({ character }) {
 
     if (isLoading) return <Loader />
     console.log('CharacterCard', data);
-    if (!data === []) return (
+    if (!data == []) return (
         <div className="character-card">
             <Typography variant="h5" textAlign="center">Subject Card</Typography>
             <Typography><b>Name:</b> {data[0].name}</Typography>
