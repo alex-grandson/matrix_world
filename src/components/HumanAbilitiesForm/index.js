@@ -11,12 +11,15 @@ export default function (props) {
     const [ editSubject ] = useEditSubjectAbilitiesMutation();
     const { id } = data[0];
 
-    useEffect(() => {
-        console.log('render form', data);
+    const resetForm = () => {
         formik.setFieldValue('health', data[0].health);
         formik.setFieldValue('agility', data[0].agility);
         formik.setFieldValue('speed', data[0].speed);
         formik.setFieldValue('impact_force', data[0].impact_force);
+    }
+
+    useEffect(() => {
+        resetForm();
     }, [character.selectedSubject, data])
 
     const handleEditAbilities = async () => {
@@ -195,7 +198,7 @@ export default function (props) {
                         fullWidth
                         type="reset"
                         onClick={() => {
-                            formik.resetForm();
+                            resetForm();
                             setIsButtonDisabled(true);
                         }}
                     >
