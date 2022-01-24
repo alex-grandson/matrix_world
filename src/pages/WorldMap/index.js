@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Grid, Stack} from "@mui/material";
+import {Button, Grid, Stack} from "@mui/material";
 import CharacterCard from "../../components/CharacterCard";
 import EdemWorld from "../../components/EdemWorld";
 import MatrixWorld from "../../components/MatrixWorld";
@@ -8,7 +8,6 @@ import MatrixWorld from "../../components/MatrixWorld";
 
 export default function WorldMap() {
     const [ selectedSubject, setSelectedSubject ] = useState(1);
-
     return (
         <Grid container spacing={2}>
             <Grid item xs={4}>
@@ -18,9 +17,15 @@ export default function WorldMap() {
                 <MatrixWorld character={{ selectedSubject, setSelectedSubject }}/>
             </Grid>
             <Grid item xs={3}>
-                <Stack direction="column">
+                <Stack direction="column" justifyItems="space-between">
                     <CharacterCard character={{ selectedSubject, setSelectedSubject }}/>
-
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        sx={{ margin: "20px" }}
+                    >
+                        Restart Emulation
+                    </Button>
                 </Stack>
             </Grid>
         </Grid>
