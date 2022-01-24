@@ -15,7 +15,7 @@ export const matrixAPI = createApi({
             }
         }),
         getSubjectByLocationNumber: builder.query({
-            query: worldId => `/subject?${worldId && `worldId=${worldId}`}`
+            query: locationsId => `/subject?${locationsId && `locationsId=${locationsId}`}`
         }),
         getLocationByWoldNumber: builder.query({
             query: worldId => `/location/world?${worldId && `worldId=${worldId}`}`
