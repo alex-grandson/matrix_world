@@ -13,11 +13,12 @@ export default function WorldMap() {
             <Grid item xs={4}>
                 <EdemWorld character={{ selectedSubject, setSelectedSubject }} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={4}>
                 <MatrixWorld character={{ selectedSubject, setSelectedSubject }}/>
             </Grid>
+            <Grid item xs={1}/>
             <Grid item xs={3}>
-                <Stack direction="column" justifyItems="space-between">
+                <Stack direction="column" justifyItems="space-between" sx={{ position: "fixed" }}>
                     <CharacterCard character={{ selectedSubject, setSelectedSubject }}/>
                     <Button
                         variant="contained"
