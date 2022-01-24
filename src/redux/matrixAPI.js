@@ -4,8 +4,14 @@ export const matrixAPI = createApi({
     reducerPath: 'matrixAPI',
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/'}),
     endpoints: (builder) => ({
-        getHumanById: builder.query({
-            query: id => `/human?${id && `id=${id}`}`
+        getSubjectById: builder.query({
+            query: id => `/subject?${id && `id=${id}`}`
+        }),
+        editSubjectAbilities: builder.mutation({
+            query: (body = {}) => {
+                const { id } = body;
+                return { url: `subject/${id}`, method: 'PATCH', body:  { ...body } };
+            }
         }),
         getLocationsList: builder.query({
             query: id => `/location?${id && `id=${id}`}`
@@ -14,6 +20,6 @@ export const matrixAPI = createApi({
 })
 
 export const {
-    useGetHumanByIdQuery,
-    useGetLocationListQuery
+    useGetSubjectByIdQuery,
+    useEditSubjectAbilitiesMutation
 } = matrixAPI

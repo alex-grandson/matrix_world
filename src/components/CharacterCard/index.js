@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import './index.sass'
 import { Divider, Typography} from "@mui/material";
-import {useGetHumanByIdQuery} from "../../redux/matrixAPI";
+import { useGetSubjectByIdQuery } from "../../redux/matrixAPI";
 import HumanAbilitiesForm from "../HumanAbilitiesForm";
 
 export default function CharacterCard() {
-    const { data = [], isLoading } = useGetHumanByIdQuery();
+    const { data = [], isLoading } = useGetSubjectByIdQuery(1);
 
     if (isLoading) return <Typography variant="p">Loading...</Typography>;
 

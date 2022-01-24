@@ -3,38 +3,45 @@ import {Form, FormikProvider, useFormik} from "formik";
 import {Button, IconButton, InputAdornment, Stack, TextField} from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
+import { useEditSubjectAbilitiesMutation } from "../../redux/matrixAPI";
 
 export default function (props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
     const { data } = props;
+    const [ editSubject ] = useEditSubjectAbilitiesMutation();
+    const { id } = data[0];
 
+    const handleEditAbilities = async () => {
+        setIsButtonDisabled(true);
+        if (!formik || !formik.isValid) return null;
+        try {
+            console.log(`Edit Subject id=${id}`, formik.values);
+            const { data } = await editSubject({ ...formik.values, id });
+        } catch (e) {
+            console.error('Cannot update subject abilities: ', e);
+        }
+
+    }
     const formik = useFormik({
         initialValues: {
+            id: data[0].id,
             health: data[0].health,
             agility: data[0].agility,
             speed: data[0].speed,
             impact_force: data[0].impact_force
         },
-        onSubmit: (values) => {
-            // alert(JSON.stringify(values, null, 2));
-            console.log(values);
-            setIsButtonDisabled(true);
-        },
+        onSubmit: handleEditAbilities
     });
     const { getFieldProps, handleSubmit, setFieldValue, touched, errors } = formik;
 
-    const handleAdd = (e) => {
-        console.log(e);
-        setIsButtonDisabled(false);
-    }
-    const handleSubstractButton = (e) => {
-        setFieldValue('health', formik.values.health - 1)
-        console.log(e);
-    }
     return (
         <FormikProvider value={formik}>
             <Form>
+                <TextField
+                    className="hiddenInput"
+                    hidden
+                    value={formik.values.id}
+                />
                 <TextField
                     sx={{margin: "10px 0 20px 0"}}
                     value={formik.values.health}
@@ -76,14 +83,28 @@ export default function (props) {
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                <IconButton edge="start" color="primary">
+                                <IconButton
+                                    edge="start"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('agility', formik.values.agility - 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <RemoveIcon />
                                 </IconButton>
                             </InputAdornment>
                         ),
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton edge="end" color="primary">
+                                <IconButton
+                                    edge="end"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('agility', formik.values.agility + 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <AddIcon />
                                 </IconButton>
                             </InputAdornment>
@@ -96,14 +117,28 @@ export default function (props) {
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                <IconButton edge="start" color="primary">
+                                <IconButton
+                                    edge="start"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('speed', formik.values.speed - 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <RemoveIcon />
                                 </IconButton>
                             </InputAdornment>
                         ),
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton edge="end" color="primary">
+                                <IconButton
+                                    edge="end"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('speed', formik.values.speed + 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <AddIcon />
                                 </IconButton>
                             </InputAdornment>
@@ -116,14 +151,28 @@ export default function (props) {
                     InputProps={{
                         startAdornment: (
                             <InputAdornment position="start">
-                                <IconButton edge="start" color="primary">
+                                <IconButton
+                                    edge="start"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('impact_force', formik.values.impact_force - 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <RemoveIcon />
                                 </IconButton>
                             </InputAdornment>
                         ),
                         endAdornment: (
                             <InputAdornment position="end">
-                                <IconButton edge="end" color="primary">
+                                <IconButton
+                                    edge="end"
+                                    color="primary"
+                                    onClick={() => {
+                                        setFieldValue('impact_force', formik.values.impact_force + 1);
+                                        setIsButtonDisabled(false);
+                                    }}
+                                >
                                     <AddIcon />
                                 </IconButton>
                             </InputAdornment>
@@ -137,6 +186,7 @@ export default function (props) {
                         disabled={isButtonDisabled}
                         fullWidth
                         type="reset"
+                        onClick={() => setIsButtonDisabled(true)}
                     >
                         Cancel
                     </Button>
