@@ -22,7 +22,7 @@ export default function Location(props){
                     {data && data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
                 </div>
                 <Stack direction="column">
-                    {location.neighbours.map((nei) => <span>{nei}</span>)}
+                    {location.neighbours.map((nei) => <span key={nei}>{nei}</span>)}
                 </Stack>
             </Stack>
 
