@@ -20,21 +20,28 @@ export default function PersonDot(props) {
     const id = open ? 'simple-popover' : undefined;
     return (
         <>
-            <IconButton className="oracle" aria-describedby={id} variant="contained" onClick={handleClick}>
+            <IconButton
+                className="oracle"
+                aria-describedby={id}
+                variant="contained"
+                onClick={handleClick}
+                fullWidth={false}
+                sx={{ margin: "5px"}}
+            >
                 <Accessible />
             </IconButton>
-            <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                    vertical: 'center',
-                    horizontal: 'right',
-                }}
-            >
-                <CharacterCard />
-            </Popover>
+            {/*<Popover*/}
+            {/*    id={id}*/}
+            {/*    open={open}*/}
+            {/*    anchorEl={anchorEl}*/}
+            {/*    onClose={handleClose}*/}
+            {/*    anchorOrigin={{*/}
+            {/*        vertical: 'center',*/}
+            {/*        horizontal: 'right',*/}
+            {/*    }}*/}
+            {/*>*/}
+            {/*    <CharacterCard />*/}
+            {/*</Popover>*/}
         </>
 
     )
