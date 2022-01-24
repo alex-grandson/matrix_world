@@ -3,11 +3,12 @@ import './index.sass'
 import { Divider, Typography} from "@mui/material";
 import { useGetSubjectByIdQuery } from "../../redux/matrixAPI";
 import HumanAbilitiesForm from "../HumanAbilitiesForm";
+import Loader from "../Loader";
 
 export default function CharacterCard() {
     const { data = [], isLoading } = useGetSubjectByIdQuery(1);
 
-    if (isLoading) return <Typography variant="p">Loading...</Typography>;
+    if (isLoading) return <Loader />
 
     return(
         <div className="character-card">
