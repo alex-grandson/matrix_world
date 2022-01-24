@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import './index.sass'
 import { Divider, Typography} from "@mui/material";
 import { useGetSubjectByIdQuery } from "../../redux/matrixAPI";
-import HumanAbilitiesForm from "../HumanAbilitiesForm";
+import SubjectAbilitiesForm from "../SubjectAbilitiesForm";
 import Loader from "../Loader";
 
 export default function CharacterCard({ character }) {
@@ -22,7 +22,8 @@ export default function CharacterCard({ character }) {
             <Typography><b>Opportunities:</b> {data[0].opportunities}</Typography>
             <Typography><b>Characteristic:</b> {data[0].characteristic}</Typography>
             <Divider className="divider">Stats</Divider>
-            <HumanAbilitiesForm data={data} character={character}/>
+            <SubjectAbilitiesForm data={data} character={character}/>
+
         </div>
     )
 }

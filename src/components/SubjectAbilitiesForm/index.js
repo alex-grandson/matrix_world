@@ -5,7 +5,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
 import { useEditSubjectAbilitiesMutation } from "../../redux/matrixAPI";
 
-export default function (props) {
+export default function SubjectAbilitiesForm(props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const { data, character } = props;
     const [ editSubject ] = useEditSubjectAbilitiesMutation();
