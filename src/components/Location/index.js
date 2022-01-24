@@ -11,14 +11,21 @@ export default function Location(props){
 
     if (isLoading) return <Loader />
 
-
+    console.log('location', location);
     return (
-        <>
-            <Typography variant="h5">
-                {location.name}
-            </Typography>
-            {data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
+        <div className="location">
+            <Stack direction="row"  justifyContent="space-between" alignContent="start">
+                <div>
+                    <Typography variant="h5">
+                        <span>{location.id}: </span>{location.name}
+                    </Typography>
+                    {data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
+                </div>
+                <Stack direction="column">
+                    {location.array_of_neighbours.map((nei) => <span>{nei}</span>)}
+                </Stack>
+            </Stack>
 
-        </>
+        </div>
     )
 }
