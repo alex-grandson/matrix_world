@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Form, FormikProvider, useFormik} from "formik";
 import {Button, IconButton, InputAdornment, Stack, TextField} from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -7,9 +7,17 @@ import { useEditSubjectAbilitiesMutation } from "../../redux/matrixAPI";
 
 export default function (props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const { data } = props;
+    const { data, character } = props;
     const [ editSubject ] = useEditSubjectAbilitiesMutation();
     const { id } = data[0];
+
+    useEffect(() => {
+        console.log('render form', data);
+        formik.setFieldValue('health', data[0].health);
+        formik.setFieldValue('agility', data[0].agility);
+        formik.setFieldValue('speed', data[0].speed);
+        formik.setFieldValue('impact_force', data[0].impact_force);
+    }, [character.selectedSubject, data])
 
     const handleEditAbilities = async () => {
         setIsButtonDisabled(true);

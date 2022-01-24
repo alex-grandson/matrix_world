@@ -3,19 +3,18 @@ import {IconButton, Popover} from "@mui/material";
 import './index.sass';
 import {Accessible, Person, PersonOutline} from '@mui/icons-material';
 import CharacterCard from "../CharacterCard";
+import {store} from "../../redux/store";
 
-export default function PersonDot(props) {
+export default function PersonDot({ character }) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
+        character.character.setSelectedSubject(character.id);
     };
-
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
     return (
@@ -25,7 +24,6 @@ export default function PersonDot(props) {
                 aria-describedby={id}
                 variant="contained"
                 onClick={handleClick}
-                fullWidth={false}
                 sx={{ margin: "5px"}}
             >
                 <Accessible />

@@ -5,13 +5,12 @@ import {EDEM_WORLD} from "../../constants";
 import Loader from "../Loader";
 import Location from "../Location";
 
-export default function EdemWorld({name}) {
+export default function EdemWorld({ character }) {
     const {data = [], isLoading} = useGetLocationByWoldNumberQuery(EDEM_WORLD);
     if (isLoading) return <Loader />
-    console.log('EDEM_WORLD', data);
     return (
         <div className="world">
-            {data.map((location, idx) => <Location location={location} key={location.id}/>)}
+            {data.map((location, idx) => <Location location={location} key={location.id} character={character}/>)}
         </div>
     )
 }
