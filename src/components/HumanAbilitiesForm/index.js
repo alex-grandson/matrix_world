@@ -186,7 +186,10 @@ export default function (props) {
                         disabled={isButtonDisabled}
                         fullWidth
                         type="reset"
-                        onClick={() => setIsButtonDisabled(true)}
+                        onClick={() => {
+                            formik.resetForm();
+                            setIsButtonDisabled(true);
+                        }}
                     >
                         Cancel
                     </Button>
