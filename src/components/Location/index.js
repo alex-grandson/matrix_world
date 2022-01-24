@@ -19,7 +19,7 @@ export default function Location(props){
                     <Typography variant="h5">
                         <span>{location.id}: </span>{location.name}
                     </Typography>
-                    {data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
+                    {data && data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
                 </div>
                 <Stack direction="column">
                     {location.neighbours.map((nei) => <span>{nei}</span>)}
