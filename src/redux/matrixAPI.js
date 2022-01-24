@@ -13,13 +13,18 @@ export const matrixAPI = createApi({
                 return { url: `subject/${id}`, method: 'PATCH', body:  { ...body } };
             }
         }),
-        getLocationsList: builder.query({
-            query: id => `/location?${id && `id=${id}`}`
+        getSubjectByLocationNumber: builder.query({
+            query: location_number => `/subject?${location_number && `location_number=${location_number}`}`
+        }),
+        getLocationByWoldNumber: builder.query({
+            query: world_number => `/location?${world_number && `world_number=${world_number}`}`
         })
     })
 })
 
 export const {
     useGetSubjectByIdQuery,
-    useEditSubjectAbilitiesMutation
+    useEditSubjectAbilitiesMutation,
+    useGetLocationByWoldNumberQuery,
+    useGetSubjectByLocationNumberQuery
 } = matrixAPI
