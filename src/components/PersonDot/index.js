@@ -1,9 +1,9 @@
 import React from "react";
 import {IconButton, Popover} from "@mui/material";
 import './index.sass';
-import {Accessible, Person, PersonOutline} from '@mui/icons-material';
-import CharacterCard from "../CharacterCard";
-import {store} from "../../redux/store";
+import Icon from '@mui/material/Icon';
+import {sideColors, sideIcons} from "../../constants";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 export default function PersonDot({ character }) {
 
@@ -20,13 +20,12 @@ export default function PersonDot({ character }) {
     return (
         <>
             <IconButton
-                className="oracle"
                 aria-describedby={id}
                 variant="contained"
                 onClick={handleClick}
-                sx={{ margin: "5px"}}
+                sx={{ margin: "5px", backgroundColor: sideColors[character?.side ? character?.side : 'grey'] }}
             >
-                <Accessible />
+                <Icon component={character?.side ? sideIcons[character?.side] : AccountCircleIcon} />
             </IconButton>
             {/*<Popover*/}
             {/*    id={id}*/}
