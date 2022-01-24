@@ -3,12 +3,12 @@ import {Form, FormikProvider, useFormik} from "formik";
 import {Button, IconButton, InputAdornment, Stack, TextField} from "@mui/material";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { useEditSubjectAbilitiesMutation } from "../../redux/matrixAPI";
+import { useEditSubjectMutation } from "../../redux/matrixAPI";
 
 export default function SubjectAbilitiesForm(props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const { data, character } = props;
-    const [ editSubject ] = useEditSubjectAbilitiesMutation();
+    const [ editSubject ] = useEditSubjectMutation();
     const { id } = data[0];
 
     const resetForm = () => {

@@ -7,7 +7,7 @@ export const matrixAPI = createApi({
         getSubjectById: builder.query({
             query: id => `/subject?${id && `id=${id}`}`
         }),
-        editSubjectAbilities: builder.mutation({
+        editSubject: builder.mutation({
             query: (body = {}) => {
                 const { id } = body;
                 return { url: `subject/${id}`, method: 'PATCH', body:  { ...body } };
@@ -24,7 +24,7 @@ export const matrixAPI = createApi({
 
 export const {
     useGetSubjectByIdQuery,
-    useEditSubjectAbilitiesMutation,
+    useEditSubjectMutation,
     useGetLocationByWoldNumberQuery,
     useGetSubjectByLocationNumberQuery
 } = matrixAPI
