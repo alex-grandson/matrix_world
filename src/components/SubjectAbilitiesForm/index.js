@@ -15,7 +15,7 @@ export default function SubjectAbilitiesForm(props) {
         formik.setFieldValue('health', data[0].health);
         formik.setFieldValue('agility', data[0].agility);
         formik.setFieldValue('speed', data[0].speed);
-        formik.setFieldValue('impact_force', data[0].impact_force);
+        formik.setFieldValue('impactForce', data[0].impactForce);
     }
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export default function SubjectAbilitiesForm(props) {
             health: data[0].health,
             agility: data[0].agility,
             speed: data[0].speed,
-            impact_force: data[0].impact_force
+            impactForce: data[0].impactForce
         },
         onSubmit: handleEditAbilities
     });
@@ -157,7 +157,7 @@ export default function SubjectAbilitiesForm(props) {
                     }} />
                 <TextField
                     sx={{marginBottom: "20px"}}
-                    value={formik.values.impact_force}
+                    value={formik.values.impactForce}
                     label="Impact Force"
                     InputProps={{
                         startAdornment: (
@@ -166,7 +166,7 @@ export default function SubjectAbilitiesForm(props) {
                                     edge="start"
                                     color="primary"
                                     onClick={() => {
-                                        setFieldValue('impact_force', formik.values.impact_force - 1);
+                                        setFieldValue('impactForce', formik.values.impactForce - 1);
                                         setIsButtonDisabled(false);
                                     }}
                                 >
@@ -180,7 +180,7 @@ export default function SubjectAbilitiesForm(props) {
                                     edge="end"
                                     color="primary"
                                     onClick={() => {
-                                        setFieldValue('impact_force', formik.values.impact_force + 1);
+                                        setFieldValue('impactForce', formik.values.impactForce + 1);
                                         setIsButtonDisabled(false);
                                     }}
                                 >

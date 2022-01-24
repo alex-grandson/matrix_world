@@ -1,8 +1,9 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {FAKE_SERVER, PROD_SERVER} from "../constants";
 
 export const matrixAPI = createApi({
     reducerPath: 'matrixAPI',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/'}),
+    baseQuery: fetchBaseQuery({ baseUrl: PROD_SERVER}),
     endpoints: (builder) => ({
         getSubjectById: builder.query({
             query: id => `/subject?${id && `id=${id}`}`
@@ -14,10 +15,10 @@ export const matrixAPI = createApi({
             }
         }),
         getSubjectByLocationNumber: builder.query({
-            query: location_number => `/subject?${location_number && `location_number=${location_number}`}`
+            query: worldId => `/subject?${worldId && `worldId=${worldId}`}`
         }),
         getLocationByWoldNumber: builder.query({
-            query: world_number => `/location?${world_number && `world_number=${world_number}`}`
+            query: worldId => `/location/world?${worldId && `worldId=${worldId}`}`
         })
     })
 })

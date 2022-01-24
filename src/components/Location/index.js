@@ -7,7 +7,7 @@ import PersonDot from "../PersonDot";
 
 export default function Location(props){
     const { location, character } = props;
-    const { data = {}, isLoading } = useGetSubjectByLocationNumberQuery(location.location_number);
+    const { data = {}, isLoading } = useGetSubjectByLocationNumberQuery(location.worldId);
 
     if (isLoading) return <Loader />
 
@@ -22,7 +22,7 @@ export default function Location(props){
                     {data.map((subject) => <PersonDot key={subject.id} character={{ ...subject, character }} />)}
                 </div>
                 <Stack direction="column">
-                    {location.array_of_neighbours.map((nei) => <span>{nei}</span>)}
+                    {location.neighbours.map((nei) => <span>{nei}</span>)}
                 </Stack>
             </Stack>
 
