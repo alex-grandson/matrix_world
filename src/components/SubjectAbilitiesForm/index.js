@@ -7,10 +7,9 @@ import { useEditSubjectMutation } from "../../redux/matrixAPI";
 
 export default function SubjectAbilitiesForm(props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const { data, character } = props;
+    const { data, character, fightTable } = props;
     const [ editSubject ] = useEditSubjectMutation();
     const { id } = data;
-
     const resetForm = () => {
         formik.setFieldValue('health', data.health);
         formik.setFieldValue('agility', data.agility);
@@ -57,7 +56,7 @@ export default function SubjectAbilitiesForm(props) {
                     sx={{margin: "10px 0 20px 0"}}
                     value={formik.values.health}
                     label="Health"
-                    InputProps={{
+                    InputProps={ !fightTable && {
                         startAdornment: (
                             <InputAdornment position="start">
                                 <IconButton
@@ -91,7 +90,7 @@ export default function SubjectAbilitiesForm(props) {
                     sx={{marginBottom: "20px"}}
                     value={formik.values.agility}
                     label="Agility"
-                    InputProps={{
+                    InputProps={ !fightTable && {
                         startAdornment: (
                             <InputAdornment position="start">
                                 <IconButton
@@ -125,7 +124,7 @@ export default function SubjectAbilitiesForm(props) {
                     sx={{marginBottom: "20px"}}
                     value={formik.values.speed}
                     label="Speed"
-                    InputProps={{
+                    InputProps={ !fightTable && {
                         startAdornment: (
                             <InputAdornment position="start">
                                 <IconButton
@@ -159,7 +158,7 @@ export default function SubjectAbilitiesForm(props) {
                     sx={{marginBottom: "20px"}}
                     value={formik.values.impactForce}
                     label="Impact Force"
-                    InputProps={{
+                    InputProps={ !fightTable && {
                         startAdornment: (
                             <InputAdornment position="start">
                                 <IconButton
@@ -189,33 +188,35 @@ export default function SubjectAbilitiesForm(props) {
                             </InputAdornment>
                         )
                     }} />
-                <Stack direction="row">
-                    <Button
-                        className="control"
-                        variant="outlined"
-                        color="error"
-                        disabled={isButtonDisabled}
-                        fullWidth
-                        type="reset"
-                        onClick={() => {
-                            resetForm();
-                            setIsButtonDisabled(true);
-                        }}
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        className="control"
-                        variant="contained"
-                        color="success"
-                        disabled={isButtonDisabled}
-                        fullWidth
-                        type="submit"
-                        onSubmit={handleSubmit}
-                    >
-                        Apply
-                    </Button>
-                </Stack>
+                {!fightTable &&
+                    <Stack direction="row">
+                        <Button
+                            className="control"
+                            variant="outlined"
+                            color="error"
+                            disabled={isButtonDisabled}
+                            fullWidth
+                            type="reset"
+                            onClick={() => {
+                                resetForm();
+                                setIsButtonDisabled(true);
+                            }}
+                        >
+                            Cancel
+                        </Button>
+                        <Button
+                            className="control"
+                            variant="contained"
+                            color="success"
+                            disabled={isButtonDisabled}
+                            fullWidth
+                            type="submit"
+                            onSubmit={handleSubmit}
+                        >
+                            Apply
+                        </Button>
+                    </Stack>
+                }
             </Form>
         </FormikProvider>
     )

@@ -5,7 +5,7 @@ import SubjectAbilitiesForm from "../SubjectAbilitiesForm";
 import Loader from "../Loader";
 import SubjectMovingForm from "../SubjectMovingForm";
 
-export default function FightCard({ character }) {
+export default function FightCard({ character, fightTable }) {
 
     const { data = [], isLoading } = useGetSubjectByIdQuery(character.selectedSubject);
 
@@ -17,13 +17,13 @@ export default function FightCard({ character }) {
         <div className="character-card">
 
             <Typography variant="h5" textAlign="center">Subject Card</Typography>
-            <Typography><b>Name:</b> {data[0].name}</Typography>
+            <Typography><b>Name:</b> {data.name}</Typography>
             <Divider className="divider">Description</Divider>
-            <Typography><b>Opportunities:</b> {data[0].opportunities}</Typography>
-            <Typography><b>Characteristic:</b> {data[0].characteristic}</Typography>
+            <Typography><b>Opportunities:</b> {data.opportunities}</Typography>
+            <Typography><b>Characteristic:</b> {data.characteristic}</Typography>
             <Divider className="divider">Stats</Divider>
-            <SubjectAbilitiesForm data={data} character={character}/>
-            <SubjectMovingForm data={data} character={character} />
+            <SubjectAbilitiesForm data={data} character={character} fightTable />
+            {/*<SubjectMovingForm data={data} character={character} />*/}
         </div>
     )
 }
