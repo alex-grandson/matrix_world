@@ -6,7 +6,7 @@ export const matrixAPI = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: PROD_SERVER}),
     endpoints: (builder) => ({
         getSubjectById: builder.query({
-            query: id => `/subject?${id && `id=${id}`}`
+            query: id => `/subject/sub?${id && `id=${id}`}`
         }),
         editSubject: builder.mutation({
             query: (body = {}) => {

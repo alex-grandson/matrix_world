@@ -9,13 +9,13 @@ export default function SubjectAbilitiesForm(props) {
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const { data, character } = props;
     const [ editSubject ] = useEditSubjectMutation();
-    const { id } = data[0];
+    const { id } = data;
 
     const resetForm = () => {
-        formik.setFieldValue('health', data[0].health);
-        formik.setFieldValue('agility', data[0].agility);
-        formik.setFieldValue('speed', data[0].speed);
-        formik.setFieldValue('impactForce', data[0].impactForce);
+        formik.setFieldValue('health', data.health);
+        formik.setFieldValue('agility', data.agility);
+        formik.setFieldValue('speed', data.speed);
+        formik.setFieldValue('impactForce', data.impactForce);
     }
 
     useEffect(() => {
@@ -35,11 +35,11 @@ export default function SubjectAbilitiesForm(props) {
     }
     const formik = useFormik({
         initialValues: {
-            id: data[0].id,
-            health: data[0].health,
-            agility: data[0].agility,
-            speed: data[0].speed,
-            impactForce: data[0].impactForce
+            id: data.id,
+            health: data.health,
+            agility: data.agility,
+            speed: data.speed,
+            impactForce: data.impactForce
         },
         onSubmit: handleEditAbilities
     });

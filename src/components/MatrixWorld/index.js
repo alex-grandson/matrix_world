@@ -8,11 +8,11 @@ import {Typography} from "@mui/material";
 export default function MatrixWorld({ character }) {
     const { data = {}, isLoading } = useGetLocationByWoldNumberQuery(MATRIX_WORLD);
     if (isLoading) return <Loader />
-    console.log('MatrixWorld', data);
+    console.log('MATRIX_WORLD: GetLocation', data);
     return (
         <div className="world">
             <Typography variant="h5" textAlign="center">Matrix</Typography>
-            {data.map((location, idx) => <Location location={location} key={location.id} character={character}/>)}
+            {data && data?.map((location) => <Location location={location} key={location.id} character={character}/>)}
         </div>
     )
 }
