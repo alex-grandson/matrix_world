@@ -20,13 +20,13 @@ export default function WorldMap() {
             <Grid item xs={3}>
                 <Stack direction="column" justifyItems="space-between" sx={{ position: "fixed" }}>
                     <CharacterCard character={{ selectedSubject, setSelectedSubject }}/>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{ margin: "20px" }}
-                    >
-                        Restart Emulation
-                    </Button>
+                    {/*<Button*/}
+                    {/*    variant="contained"*/}
+                    {/*    color="primary"*/}
+                    {/*    sx={{ margin: "20px" }}*/}
+                    {/*>*/}
+                    {/*    Restart Emulation*/}
+                    {/*</Button>*/}
                 </Stack>
             </Grid>
         </Grid>
